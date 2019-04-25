@@ -32,14 +32,11 @@
                  | BooleanFactor(boolean_value) for TRUE or FALSE
                  | pass through expr()'s return value for LPAREN expr RPAREN
 
+
     // check token for type of operation
     is_relop        ::= bool
     is_termop       ::= bool
     is_factorop     ::= bool
-
-
-
-
 
 ### Declarations
 
