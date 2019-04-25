@@ -23,33 +23,6 @@ Declarations notify the compiler about symbols used in the program and their typ
 - variable factors must be symbols defined as variables, i.e., primitive types, and not as functions.  The type of the variable factor expression is the declared type of the variable found by querying the symbol table (`searchSymbol`).
 - function factors must be symbols defined as functions (`isFuncType`).   The type of the `function_parameters` must match the type of the formal arguments as the defined function found by querying the symbol table (`searchSymbol`).  The type of the function factor expression is the return type of the function declaration found.
 
-### Ershov Numbering
-
-(The dragon book, section 8.10 goes through this algorithm carefully.)
-
-    static void visitExpression(struct Expression *node);
-
-For each subtree, we compute how many registers are needed to avoid
-storing intermediate results to memory.  This number is the Ershov
-number.  It is computed via a tree traversal as follows:
-
-- Leaves are 1, since they only need to store their own value
-  (`NUMBERFACTOR`, `BOOLEANFACTOR`, `VARIABLEFACTOR`, and
-  `FUNCTIONFACTOR`).
-- An inner node with only one child (`UNARYEXPRESSION`) has the same
-  number as the child.
-- An inner node with two children (`BINARYEXPRESSION`) depends on the values of its children:
-  - If both children have the same Ershov numbers, itgets the same
-  number plus 1.
-  - If the two children have different numbers, it gets the larger of
-  the two.
-
-Notes
-
-- `FUNCTIONFACTOR` only has an Ershov number of 1.  This is because it
-pushes any used registers onto the stack before evaluating the
-function parameter expressions.)
-
 ## Statements
 
 - assignment - type of `assign_variable` and `assign_expression` must match.
