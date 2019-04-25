@@ -21,6 +21,7 @@ tokens as the leaves of the tree.
     [ ] means 0 or 1
     ( ) just groups symbols
     
+    
     // declarations
     program      ::= block
     block        ::= vardecls funcdecls statement
@@ -28,6 +29,7 @@ tokens as the leaves of the tree.
     funcdelcs    ::= { FUNC IDENT LPAREN [ formals ] RPAREN [ COLON type ] block }
     formals      ::= IDENT COLON type { COMMA IDENT COLON type }
     type         ::= INT | BOOL
+
 
     // statements
     statement    ::=   IDENT ASSIGN expr
@@ -39,6 +41,7 @@ tokens as the leaves of the tree.
                      | READ IDENT
                      | WRITE expr
     exprlist     ::= [ expr { COMMA expr } ]
+
 
     // expressions
     expr         ::= simpleexpr [ relop simpleexpr ]
